@@ -1,0 +1,18 @@
+{
+  "name": "Customer",
+  "type": "object",
+  "properties": {
+    "customer_id": {
+      "type": "string",
+      "description": "Unique customer identifier"
+    },
+    "customer_name": {
+      "type": "string",
+      "description": "Customer full name or company name"
+    }
+  },
+  "required": [
+    "customer_id",
+    "customer_name"
+  ]
+}

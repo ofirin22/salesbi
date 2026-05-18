@@ -1,0 +1,79 @@
+{
+  "name": "ImportLog",
+  "type": "object",
+  "properties": {
+    "file_name": {
+      "type": "string"
+    },
+    "uploaded_by": {
+      "type": "string"
+    },
+    "upload_started_at": {
+      "type": "string"
+    },
+    "upload_finished_at": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "partial_success",
+        "failed",
+        "processing"
+      ]
+    },
+    "total_rows_in_file": {
+      "type": "number"
+    },
+    "rows_imported": {
+      "type": "number"
+    },
+    "rows_updated": {
+      "type": "number"
+    },
+    "rows_skipped": {
+      "type": "number"
+    },
+    "rows_failed": {
+      "type": "number"
+    },
+    "duplicate_rows_detected": {
+      "type": "number"
+    },
+    "validation_errors_count": {
+      "type": "number"
+    },
+    "error_details": {
+      "type": "string"
+    },
+    "summary_rebuild_status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "file_name"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "name": "DailySalesSummary",
+  "type": "object",
+  "properties": {
+    "summary_date": {
+      "type": "string",
+      "format": "date",
+      "description": "The date for this summary"
+    },
+    "customer_id": {
+      "type": "string",
+      "description": "Customer identifier"
+    },
+    "customer_name": {
+      "type": "string",
+      "description": "Customer name"
+    },
+    "brand": {
+      "type": "string",
+      "description": "Product brand"
+    },
+    "sales_representative": {
+      "type": "string",
+      "description": "Sales rep name"
+    },
+    "total_quantity": {
+      "type": "number",
+      "description": "Total units sold"
+    },
+    "total_sales": {
+      "type": "number",
+      "description": "Total sales value"
+    },
+    "total_discount": {
+      "type": "number",
+      "description": "Total discounts"
+    },
+    "total_tax": {
+      "type": "number",
+      "description": "Total tax"
+    },
+    "orders_count": {
+      "type": "number",
+      "description": "Number of unique orders"
+    },
+    "order_lines_count": {
+      "type": "number",
+      "description": "Number of order lines"
+    },
+    "summary_key": {
+      "type": "string",
+      "description": "Unique key for upsert"
+    }
+  },
+  "required": [
+    "summary_date"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.sales_representative": "{{user.full_name}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

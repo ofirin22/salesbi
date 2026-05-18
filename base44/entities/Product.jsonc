@@ -1,0 +1,21 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "sku": {
+      "type": "string",
+      "description": "Stock Keeping Unit identifier"
+    },
+    "product_name": {
+      "type": "string",
+      "description": "Product display name"
+    },
+    "brand": {
+      "type": "string",
+      "description": "Product brand"
+    }
+  },
+  "required": [
+    "sku"
+  ]
+}

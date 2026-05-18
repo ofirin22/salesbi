@@ -1,0 +1,68 @@
+{
+  "name": "ImportJob",
+  "type": "object",
+  "properties": {
+    "import_log_id": {
+      "type": "string"
+    },
+    "chunk_index": {
+      "type": "number"
+    },
+    "total_chunks": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "processing",
+        "done",
+        "failed"
+      ],
+      "default": "pending"
+    },
+    "rows_data_url": {
+      "type": "string",
+      "description": "URL to uploaded JSON file containing the chunk rows"
+    },
+    "rows_imported": {
+      "type": "number"
+    },
+    "rows_skipped": {
+      "type": "number"
+    },
+    "rows_failed": {
+      "type": "number"
+    },
+    "error_details": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "import_log_id",
+    "chunk_index",
+    "total_chunks"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

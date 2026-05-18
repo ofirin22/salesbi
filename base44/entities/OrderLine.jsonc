@@ -1,0 +1,68 @@
+{
+  "name": "OrderLine",
+  "type": "object",
+  "properties": {
+    "order_number": {
+      "type": "string",
+      "description": "Reference to order"
+    },
+    "sku": {
+      "type": "string",
+      "description": "Product SKU"
+    },
+    "product_name": {
+      "type": "string",
+      "description": "Product name (denormalized)"
+    },
+    "brand": {
+      "type": "string",
+      "description": "Brand (denormalized)"
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Quantity ordered"
+    },
+    "line_total": {
+      "type": "number",
+      "description": "Total for this line"
+    },
+    "discount": {
+      "type": "number",
+      "description": "Discount for this line"
+    },
+    "tax": {
+      "type": "number",
+      "description": "Tax for this line"
+    },
+    "line_key": {
+      "type": "string",
+      "description": "Unique key: order_number__sku"
+    }
+  },
+  "required": [
+    "order_number",
+    "sku"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

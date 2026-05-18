@@ -1,0 +1,78 @@
+{
+  "name": "Order",
+  "type": "object",
+  "properties": {
+    "order_number": {
+      "type": "string",
+      "description": "Unique order identifier"
+    },
+    "customer_id": {
+      "type": "string",
+      "description": "Reference to customer"
+    },
+    "customer_name": {
+      "type": "string",
+      "description": "Customer name (denormalized)"
+    },
+    "sales_representative": {
+      "type": "string",
+      "description": "Name of sales rep"
+    },
+    "order_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the order"
+    },
+    "order_total": {
+      "type": "number",
+      "description": "Total order value"
+    },
+    "order_discount": {
+      "type": "number",
+      "description": "Total discount applied"
+    },
+    "order_tax": {
+      "type": "number",
+      "description": "Total tax applied"
+    }
+  },
+  "required": [
+    "order_number"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.sales_representative": "{{user.full_name}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "data.sales_representative": "{{user.full_name}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
