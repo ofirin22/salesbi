@@ -409,9 +409,14 @@ app.get('/jobs', auth, async (_req, res) => {
 // ─── Start ────────────────────────────────────────────────────────────────────
 initDb()
   .then(() => {
-    app.listen(PORT, () => console.log(`Sales import backend running on port ${PORT}`));
+    app.listen(PORT, "0.0.0.0", () =>
+      console.log(`Sales import backend running on port ${PORT}`)
+    );
   })
   .catch(err => {
     console.error('DB init failed:', err.message);
-    app.listen(PORT, () => console.log(`Sales import backend running on port ${PORT} (no DB)`));
+
+    app.listen(PORT, "0.0.0.0", () =>
+      console.log(`Sales import backend running on port ${PORT} (no DB)`)
+    );
   });
